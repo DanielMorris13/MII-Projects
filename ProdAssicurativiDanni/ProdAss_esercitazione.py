@@ -1,4 +1,5 @@
 # Importa le librerie necessarie
+import yaml
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -6,8 +7,11 @@ from scipy.stats import gamma, lognorm, norm, expon, poisson
 from scipy.optimize import minimize
 from sklearn.neighbors import KernelDensity
 
+with open ("config.yaml", "r") as f:
+    config = yaml.safe_load(f)
+
 # Caricamento del dataset (sostituisci 'danish.csv' con il percorso del tuo file)
-L = pd.read_csv('danish.csv')['Loss']  # Assumendo che il dataset si chiami 'danish.csv'
+L = pd.read_csv(config['data']['assignment'])  # Assumendo che il dataset si chiami 'danish.csv'
 
 # Per esempio, possiamo caricare un dataset fittizio
 # Supponiamo che `danish.Loss` sia una lista di valori numerici
